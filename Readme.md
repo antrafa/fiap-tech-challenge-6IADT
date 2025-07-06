@@ -1,47 +1,202 @@
-# Tech Challenge - IA para Devs: Fase 1 
- 
- ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)
+# Tech Challenge - Fase 1: Sistema Inteligente de Suporte ao Diagnóstico Cardiovascular
 
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white) ![Scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white)
+![Dataset](https://img.shields.io/badge/Dataset-Heart%20Disease-red) ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)
 
-<!-- ![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen) -->
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) ![Scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+## Sumário
+
+* [Visão Geral do Projeto](#visão-geral-do-projeto)
+* [Objetivo do Desafio](#objetivo-do-desafio)
+* [Dataset](#dataset)
+* [Estrutura do Projeto](#estrutura-do-projeto)
+* [Requisitos](#requisitos)
+* [Como Executar](#como-executar)
+* [Análise Exploratória de Dados (EDA)](#análise-exploratória-de-dados-eda)
+* [Pré-processamento de Dados](#pré-processamento-de-dados)
+* [Modelagem e Avaliação](#modelagem-e-avaliação)
+* [Resultados](#resultados)
+* [Próximos Passos (Fases Futuras)](#próximos-passos-fases-futuras)
+* [Considerações Finais](#considerações-finais)
+* [Autor(es)](#autores)
+* [Licença](#licença)
 
 ---
 
-### Desenvolvido por:
+## Visão Geral do Projeto
+
+Este projeto faz parte do **Tech Challenge - Fase 1** da pós-graduação em IA para DEVs, com foco na construção de um sistema inteligente de suporte ao diagnóstico para um grande hospital universitário. 
+
+O objetivo é auxiliar médicos e equipes clínicas na análise inicial de exames e no processamento de dados médicos, visando acelerar a triagem e otimizar o tempo dos profissionais. 
+
+Nesta primeira fase, o foco é criar a base do sistema de IA com Machine Learning, permitindo que resultados de exames sejam analisados automaticamente e destacando informações relevantes para o diagnóstico.
+
+## Objetivo do Desafio
+
+O objetivo central desta fase é construir uma solução inicial com foco em IA para processamento de exames médicos e documentos clínicos, aplicando fundamentos essenciais de IA, Machine Learning e Visão Computaciona. 
+
+A entrega técnica principal é a classificação de exames com Machine Learning, escolhendo uma base de dados em forma de tabela para realizar o diagnóstico: "a pessoa tem ou não uma doença".
+
+## Dataset
+
+Para este desafio, foi selecionado o dataset ["Heart Disease" (Doença Cardíaca)](https://www.kaggle.com/datasets/oktayrdeki/heart-disease), disponível no Kaggle.
+
+Este conjunto de dados foi escolhido por sua relevância clínica na predição de uma condição médica de alta prevalência (doença cardiovascular), sua estrutura adequada para uma tarefa de classificação binária e a riqueza de atributos clínicos e demográficos que permitem uma análise abrangente dos fatores de risco. O objetivo é, a partir dos dados fornecidos, classificar se um indivíduo possui ou não doença cardíaca.
+
+As colunas presentes no dataset incluem:
+
+| Coluna                   | Descrição                                                                                     |
+|--------------------------|-----------------------------------------------------------------------------------------------|
+| `Age`                    | A idade do indivíduo.                                                                         |
+| `Gender`                 | O sexo do indivíduo (Masculino ou Feminino)                                                   |
+| `Blood Pressure`         | A pressão arterial do indivíduo (sistólica)                                                   |
+| `Cholesterol Level`      | O nível total de colesterol do indivíduo.                                                     |
+| `Exercise Habits`        | Os hábitos de exercício do indivíduo (Baixo, Médio, Alto)                                     |
+| `Smoking`                | Se o indivíduo fuma ou não (Sim ou Não)                                                       |
+| `Family Heart Disease`   | Se há histórico familiar de doença cardíaca (Sim ou Não)                                      |
+| `Diabetes`               | Se o indivíduo tem diabetes (Sim ou Não)                                                      |
+| `BMI`                    | O índice de massa corporal do indivíduo.                                                      |
+| `High Blood Pressure`    | Se o indivíduo tem pressão alta (Sim ou Não)                                                  |
+| `Low HDL Cholesterol`    | Se o indivíduo tem colesterol HDL baixo (Sim ou Não)                                          |
+| `High LDL Cholesterol`   | Se o indivíduo tem colesterol LDL alto (Sim ou Não)                                           |
+| `Alcohol Consumption`    | O nível de consumo de álcool do indivíduo (Nenhum, Baixo, Médio, Alto)                        |
+| `Stress Level`           | O nível de estresse do indivíduo (Baixo, Médio, Alto)                                         |
+| `Sleep Hours`            | O número de horas que o indivíduo dorme.                                                      |
+| `Sugar Consumption`      | O nível de consumo de açúcar do indivíduo (Baixo, Médio, Alto)                                |
+| `Triglyceride Level`     | O nível de triglicerídeos do indivíduo.                                                       |
+| `Fasting Blood Sugar`    | O nível de açúcar no sangue em jejum do indivíduo.                                            |
+| `CRP Level`              | O nível de proteína C-reativa (um marcador de inflamação)                                     |
+| `Homocysteine Level`     | O nível de homocisteína do indivíduo (um aminoácido que afeta a saúde dos vasos sanguíneos)   |
+| `Heart Disease Status`   | **Variável Alvo:** O status de doença cardíaca do indivíduo (Sim ou Não)                      |
+
+## Estrutura do Projeto
 ```bash
-Ackeley - RM366072
-Antonio Rafael Ortega - RM365237
-Eduardo Tadeu - RM366322
-Leandro Pessoa - RM365755
-Mateus Castro - RM366469
+.
+├── src/                                  # Código-fonte principal
+│   ├── notebooks/                        # Notebooks Jupyter para desenvolvimento e demonstração
+│   │   └── tech_challenge_fase1.ipynb    # Notebook principal com EDA, pré-processamento, modelagem
+│   └── scripts/                          # Scripts Python (opcional, se preferir modularizar)
+│       ├── preprocess.py
+│       └── model_training.py
+├── data/                                 # Onde o dataset original será armazenado
+│   └── heart_disease.csv
+├── docs/                                 # Documentação adicional (se houver)
+├── models/                               # Modelos treinados salvos (se for o caso)
+├── README.md                             # Este arquivo
+├── Dockerfile                            # Instruções para construir a imagem Docker
+└── requirements.txt                      # Lista de dependências do projeto
 ```
 
----
+## Requisitos
 
-## Introdução e Justificativa da Escolha do Dataset
+Para configurar o ambiente de desenvolvimento e executar o projeto, você precisará ter as seguintes ferramentas instaladas:
 
-Doenças cardiovasculares representam uma das principais causas de mortalidade global, tornando a implementação de ferramentas de suporte ao diagnóstico uma necessidade real em ambientes clínicos. A capacidade de analisar um vasto volume de dados médicos e identificar padrões complexos pode otimizar a triagem de pacientes e auxiliar os profissionais de saúde na tomada de decisões informadas, agilizando processos e potencialmente salvando vidas.
+* Python 3.x
+* Pip (gerenciador de pacotes Python)
+* Docker (para a execução em contêiner, conforme solicitado pelo desafio )
 
-Este projeto visa desenvolver a base de um sistema inteligente de suporte ao diagnóstico, utilizando técnicas de Machine Learning. Para atingir este objetivo, selecionamos o conjunto de dados ["Heart Disease" (Doença Cardíaca)](https://www.kaggle.com/datasets/oktayrdeki/heart-disease), disponível na plataforma Kaggle.
+As dependências Python específicas estão listadas no arquivo `requirements.txt`.
 
-### Motivos para a Escolha do Dataset "Heart Disease":
+## Como Executar
 
-1 - Relevância Clínica: A predição de doença cardíaca é um problema real com potencial para aplicações práticas em hospitais e clínicas.
+Siga os passos abaixo para configurar o ambiente e rodar o projeto:
 
-2 - Natureza da Classificação: O conjunto de dados é estruturado para uma tarefa de classificação binária (presença ou ausência de doença cardíaca), que se alinha perfeitamente com o requisito do desafio de realizar um diagnóstico "a pessoa tem ou não uma doença". Isso permite a aplicação direta de diversos algoritmos de Machine Learning focados em classificação.
+1.  **Clone o Repositório:**
+    ```bash
+    git clone https://github.com/antrafa/fiap-tech-challenge-6IADT.git
+    cd fiap-tech-challenge-6IADT
+    ```
 
-3 - Variedade de Atributos: O dataset contém uma série de atributos clínicos e demográficos relevantes (como idade, sexo, tipo de dor no peito, pressão arterial, colesterol, entre outros), que são comumente utilizados na prática médica para avaliar o risco cardiovascular. Esta riqueza de informações permitirá explorar a influência de diferentes fatores no diagnóstico.
+2.  **Crie e Ative um Ambiente Virtual (Recomendado):**
+    ```bash
+    python -m venv venv
+    # No Windows:
+    .\venv\Scripts\activate
+    # No macOS/Linux:
+    source venv/bin/activate
+    ```
 
-4 - Disponibilidade e Acessibilidade: Sendo um dataset público e amplamente utilizado na comunidade de Machine Learning, facilita a validação e a comparação de resultados, além de possuir uma estrutura fácil que favorece a aplicação dos conceitos propostos no Tech Challenge.
+3.  **Instale as Dependências:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### O que se Pretende Descobrir com Este Dataset:
+4.  **Execute via Jupyter Notebook:**
+    ```bash
+    jupyter notebook
+    ```
+    Navegue até `src/notebooks/tech_challenge_fase1.ipynb` e execute as células.
 
-Com a utilização do dataset "Heart Disease", este projeto pretende descobrir e validar:
+5.  **Execução via Docker:** 
 
-1 - Modelos Preditivos Eficazes: O principal objetivo é desenvolver modelos de Machine Learning capazes de prever com alta acurácia a presença de doença cardíaca em indivíduos, com base em suas características clínicas e resultados de exames.
+    * Certifique-se de que o Dockerfile esteja na raiz do projeto
+    * Construa a imagem Docker:
+        ```bash
+        docker build -t tech-challenge-fase1 .
+        ```
+    * Execute o contêiner:
+        ```bash
+        docker run -p 8888:8888 -v "$(pwd):/app" tech-challenge-fase1 jupyter lab --ip=0.0.0.0 --allow-root --no-browser
+        ```
+        (Ajuste o comando `jupyter lab` para `jupyter notebook` se for o caso e a porta conforme necessário. Assegure-se de que o `Dockerfile` configure a execução do Jupyter ou do script principal.)
 
-2 - Fatores de Risco Mais Influentes: Através da análise de feature importance e outras técnicas de interpretabilidade (como SHAP, se aplicável em etapas futuras), busca-se identificar quais atributos do paciente (variáveis) são os mais relevantes e preditivos para o diagnóstico de doença cardíaca. Isso pode oferecer insights valiosos que complementem o conhecimento médico.
+## Análise Exploratória de Dados (EDA)
 
-3 - Robustez e Viabilidade do Modelo: Avaliar a performance dos modelos utilizando métricas adequadas (como acurácia, precisão, recall e F1-score) para determinar sua robustez e potencial de aplicação prática como ferramenta de suporte ao diagnóstico em um ambiente hospitalar, sempre ressaltando que a decisão final é do profissional médico.
+Nesta seção, foi realizada uma análise exploratória detalhada para entender a estrutura, distribuição e características do dataset. Isso incluiu:
+* Verificação de tipos de dados (`.info()`).
+* Análise de estatísticas descritivas para variáveis numéricas (`.describe()`).
+* Identificação e quantificação de valores ausentes (`.isnull().sum()`).
+* Visualizações gráficas (histogramas, boxplots, gráficos de contagem) para entender a distribuição das variáveis e a relação com a variável alvo.
+* Geração de um relatório automatizado com `ydata_profiling` para uma visão abrangente dos dados.
+
+## Pré-processamento de Dados
+
+Os dados passaram pelas seguintes etapas de pré-processamento para prepará-los para a modelagem:
+
+* **Tratamento de Valores Ausentes:** Detalhamento da estratégia utilizada (e.g., imputação de valores numéricos com a mediana, e categóricos com a moda).
+* **Conversão de Variáveis Categóricas:** Explicação de como as colunas categóricas (como `Gender`, `Smoking`, `Heart Disease Status`, `Exercise Habits` etc.) foram convertidas para um formato numérico (e.g., `Label Encoding` para binárias e ordinais, `One-Hot Encoding` para nominais se houver).
+* **Análise de Correlação:** (Apresentar o heatmap de correlação aqui e discutir os principais achados).
+* **Escalonamento de Dados:** (Mencionar se o escalonamento será feito antes da modelagem, após o pré-processamento).
+
+## Modelagem e Avaliação
+
+Para a tarefa de classificação binária de doença cardíaca, serão criados e avaliados modelos preditivos utilizando as seguintes técnicas:
+
+* **Modelos Utilizados:**
+    * Regressão Logística
+    * Árvore de Decisão
+    * K-Nearest Neighbors (KNN)
+    * (Outros modelos que você venha a usar)
+* **Divisão dos Dados:** Explicação da divisão do dataset em conjuntos de treino, validação e teste.
+* **Métricas de Avaliação:** As métricas de avaliação serão (e.g., `Accuracy`, `Precision`, `Recall`, `F1-score`), com discussão sobre a escolha das métricas considerando o problema de diagnóstico médico. 
+* **Interpretabilidade do Modelo:** Discussão sobre como a importância das *features* (e.g., Feature Importance, SHAP) foi utilizada para interpretar os resultados do modelo.
+
+## Resultados
+
+(Esta seção será preenchida após a execução dos modelos. Inclua prints, gráficos e análises.)
+* Apresentação das métricas de performance de cada modelo.
+* Discussão dos resultados, comparando a performance dos modelos.
+* Interpretação das *features* mais importantes.
+* Reflexão crítica sobre a aplicabilidade do modelo na prática clínica, sempre reforçando que a palavra final é do médico.
+
+## Próximos Passos (Fases Futuras)
+
+Esta fase 1 estabelece a base do sistema. Futuras fases podem incluir:
+
+* Exploração da tarefa extra de Visão Computacional para análise de imagens médicas (radiografias, tomografias).
+* Integração com outras fontes de dados e sistemas hospitalares.
+* Desenvolvimento de uma interface de usuário para o sistema.
+* Aprimoramento dos modelos com técnicas mais avançadas ou ensembles.
+
+## Considerações Finais
+
+Este projeto demonstra o potencial da Inteligência Artificial e do Machine Learning para otimizar processos na área da saúde e auxiliar profissionais médicos no diagnóstico. O aprendizado contínuo e a validação em cenários reais são cruciais para o desenvolvimento de soluções eficazes e éticas.
+
+## Autores
+
+* Ackeley - RM366072
+* Antonio Rafael Ortega - RM365237
+* Eduardo Tadeu - RM366322
+* Leandro Pessoa - RM365755
+* Mateus Castro - RM366469
