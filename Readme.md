@@ -81,8 +81,8 @@ As colunas presentes no dataset incluem:
 │       └── model_training.py
 ├── data/                                 # Onde o dataset original será armazenado
 │   └── heart_disease.csv
-├── docs/                                 # Documentação adicional (se houver)
-├── models/                               # Modelos treinados salvos (se for o caso)
+├── docs/                                 # Documentação adicional
+├── models/                               # Modelos treinados salvos
 ├── README.md                             # Este arquivo
 ├── Dockerfile                            # Instruções para construir a imagem Docker
 └── requirements.txt                      # Lista de dependências do projeto
