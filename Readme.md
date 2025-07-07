@@ -34,7 +34,7 @@ Nesta primeira fase, o foco é criar a base do sistema de IA com Machine Learnin
 
 ## Objetivo do Desafio
 
-O objetivo central desta fase é construir uma solução inicial com foco em IA para processamento de exames médicos e documentos clínicos, aplicando fundamentos essenciais de IA, Machine Learning e Visão Computaciona. 
+O objetivo central desta fase é construir uma solução inicial com foco em IA para processamento de exames médicos e documentos clínicos, aplicando fundamentos essenciais de IA e Machine Learning. 
 
 A entrega técnica principal é a classificação de exames com Machine Learning, escolhendo uma base de dados em forma de tabela para realizar o diagnóstico: "a pessoa tem ou não uma doença".
 
@@ -73,19 +73,19 @@ As colunas presentes no dataset incluem:
 ## Estrutura do Projeto
 ```bash
 .
-├── src/                                  # Código-fonte principal
-│   ├── notebooks/                        # Notebooks Jupyter para desenvolvimento e demonstração
-│   │   └── tech_challenge_fase1.ipynb    # Notebook principal com EDA, pré-processamento, modelagem
-│   └── scripts/                          # Scripts Python (opcional, se preferir modularizar)
+├── src/                                  
+│   ├── notebooks/                        
+│   │   └── tech_challenge_fase1.ipynb    
+│   └── scripts/                          
 │       ├── preprocess.py
 │       └── model_training.py
-├── data/                                 # Onde o dataset original será armazenado
+├── data/                                 
 │   └── heart_disease.csv
-├── docs/                                 # Documentação adicional
-├── models/                               # Modelos treinados salvos
-├── README.md                             # Este arquivo
-├── Dockerfile                            # Instruções para construir a imagem Docker
-└── requirements.txt                      # Lista de dependências do projeto
+├── docs/                                 
+├── models/                               
+├── README.md                             
+├── Dockerfile                            
+└── requirements.txt                      
 ```
 
 ## Requisitos
@@ -139,7 +139,6 @@ Siga os passos abaixo para configurar o ambiente e rodar o projeto:
         ```bash
         docker run -p 8888:8888 -v "$(pwd):/app" tech-challenge-fase1 jupyter lab --ip=0.0.0.0 --allow-root --no-browser
         ```
-        (Ajuste o comando `jupyter lab` para `jupyter notebook` se for o caso e a porta conforme necessário. Assegure-se de que o `Dockerfile` configure a execução do Jupyter ou do script principal.)
 
 ## Análise Exploratória de Dados (EDA)
 
@@ -155,9 +154,9 @@ Nesta seção, foi realizada uma análise exploratória detalhada para entender 
 Os dados passaram pelas seguintes etapas de pré-processamento para prepará-los para a modelagem:
 
 * **Tratamento de Valores Ausentes:** Detalhamento da estratégia utilizada (e.g., imputação de valores numéricos com a mediana, e categóricos com a moda).
-* **Conversão de Variáveis Categóricas:** Explicação de como as colunas categóricas (como `Gender`, `Smoking`, `Heart Disease Status`, `Exercise Habits` etc.) foram convertidas para um formato numérico (e.g., `Label Encoding` para binárias e ordinais, `One-Hot Encoding` para nominais se houver).
-* **Análise de Correlação:** (Apresentar o heatmap de correlação aqui e discutir os principais achados).
-* **Escalonamento de Dados:** (Mencionar se o escalonamento será feito antes da modelagem, após o pré-processamento).
+* **Conversão de Variáveis Categóricas:** Explicação de como as colunas categóricas (como `Gender`, `Smoking`, `Heart Disease Status`, `Exercise Habits` etc.) foram convertidas para um formato numérico (e.g., `Label Encoding` para binárias e ordinais, `One-Hot Encoding` para nominais).
+* **Análise de Correlação:** 
+* **Escalonamento de Dados:** 
 
 ## Modelagem e Avaliação
 
@@ -167,27 +166,17 @@ Para a tarefa de classificação binária de doença cardíaca, serão criados e
     * Regressão Logística
     * Árvore de Decisão
     * K-Nearest Neighbors (KNN)
-    * (Outros modelos que você venha a usar)
+    * ...
 * **Divisão dos Dados:** Explicação da divisão do dataset em conjuntos de treino, validação e teste.
 * **Métricas de Avaliação:** As métricas de avaliação serão (e.g., `Accuracy`, `Precision`, `Recall`, `F1-score`), com discussão sobre a escolha das métricas considerando o problema de diagnóstico médico. 
-* **Interpretabilidade do Modelo:** Discussão sobre como a importância das *features* (e.g., Feature Importance, SHAP) foi utilizada para interpretar os resultados do modelo.
+* **Interpretabilidade do Modelo:** 
 
 ## Resultados
 
-(Esta seção será preenchida após a execução dos modelos. Inclua prints, gráficos e análises.)
 * Apresentação das métricas de performance de cada modelo.
 * Discussão dos resultados, comparando a performance dos modelos.
 * Interpretação das *features* mais importantes.
 * Reflexão crítica sobre a aplicabilidade do modelo na prática clínica, sempre reforçando que a palavra final é do médico.
-
-## Próximos Passos (Fases Futuras)
-
-Esta fase 1 estabelece a base do sistema. Futuras fases podem incluir:
-
-* Exploração da tarefa extra de Visão Computacional para análise de imagens médicas (radiografias, tomografias).
-* Integração com outras fontes de dados e sistemas hospitalares.
-* Desenvolvimento de uma interface de usuário para o sistema.
-* Aprimoramento dos modelos com técnicas mais avançadas ou ensembles.
 
 ## Considerações Finais
 
