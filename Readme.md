@@ -17,10 +17,8 @@
 * [Pré-processamento de Dados](#pré-processamento-de-dados)
 * [Modelagem e Avaliação](#modelagem-e-avaliação)
 * [Resultados](#resultados)
-* [Próximos Passos (Fases Futuras)](#próximos-passos-fases-futuras)
 * [Considerações Finais](#considerações-finais)
 * [Autor(es)](#autores)
-* [Licença](#licença)
 
 ---
 
