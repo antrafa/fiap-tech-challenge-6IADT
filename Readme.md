@@ -42,8 +42,6 @@ O projeto utiliza o dataset Pima Indians Diabetes Database.
 
 - Scikit-learn: Para pré-processamento, modelagem e avaliação de Machine Learning.
 
-- Docker: Para containerização e reprodutibilidade do ambiente.
-
 ---
 
 ## 🚀 Como Executar o Projeto
@@ -54,31 +52,7 @@ O projeto utiliza o dataset Pima Indians Diabetes Database.
 
 - Docker: Para executar o ambiente containerizado de forma simples e rápida.
 
-### Execução com Docker (Método Recomendado)
-
-**1. Clone o repositório:**
-
-```bash
-git clone https://github.com/antrafa/fiap-tech-challenge-6IADT.git
-cd seu-repositorio
-```
-
-**2. Construa a imagem Docker:**
-
-Este comando lê o Dockerfile e cria um ambiente isolado com todas as dependências necessárias.
-
-```bash
-docker build -t predição-diabetes .
-```
-
-**3. Execute o container:**
-Este comando executa o script analise_diabetes.py dentro do container. O script irá carregar os dados, treinar o modelo e exibir o relatório de classificação final no seu terminal.
-
-```bash
-docker run --rm predição-diabetes
-```
-
-### Execução Local (Alternativa)
+### Execução Local
 
 **1. Clone o repositório e navegue até a pasta:**
 
@@ -95,11 +69,8 @@ source venv/bin/activate  # No Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-**3. Execute o script de análise:**
+**3. Rode o Notebook no Jupyter ou Visual Studio Code com a extensão Jupyter**
 
-```bash
-python analise_diabetes.py
-```
 
 ---
 
