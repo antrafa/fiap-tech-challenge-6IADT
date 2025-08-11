@@ -130,11 +130,12 @@ O modelo de Regressão Logística com Balanceamento de Classes provou ser uma so
 
 ---
 
-## 7. Apêndice
+## Apêndice A: Links
 
-O código-fonte completo e as instruções de execução estão disponíveis no seguinte repositório Git:
+O código-fonte completo e as instruções de execução estão disponíveis no seguinte repositório Git, e o vídeo de apresentação está publicado no YouTube:
 
 -   **Link do Repositório:** [https://github.com/antrafa/fiap-tech-challenge-6IADT/](https://github.com/antrafa/fiap-tech-challenge-6IADT/)
+-   **Link da Apresentação em vídeo:** [https://youtu.be/MKIo86L7i1g](https://youtu.be/MKIo86L7i1g)
 
 ---
 
